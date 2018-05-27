@@ -5,6 +5,8 @@ const port = process.env.PORT || 3000
 
 const mysql = require('mysql')
 
+const bodyParser = require('body-parser')
+
 const connection = mysql.createConnection({
     host: '127.0.0.1',
     user: 'root',
@@ -17,6 +19,8 @@ const dependencies = {
 }
 
 const pessoas = require('./routes/pessoas')
+
+app.use(bodyParser.urlencoded({extended: false}))
 
 app.use(express.static('public'))
 
